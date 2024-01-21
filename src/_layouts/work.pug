@@ -1,0 +1,10 @@
+---
+layout: default
+---
+div.description {{ content }}
+h4 Используемые техналогии:
+.tags
+  ul
+    | {% for tag in page.tags %}
+    li {{ tag }}
+    | {% endfor %}

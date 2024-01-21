@@ -1,0 +1,12 @@
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  ul, nav {
+    list-style: none;
+    li {
+      margin: 10px;
+    }
+  }
+}

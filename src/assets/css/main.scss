@@ -1,0 +1,14 @@
+---
+---
+@import "base";
+
+:root {
+  color-scheme: dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background: $backgrond;
+  }
+}
+

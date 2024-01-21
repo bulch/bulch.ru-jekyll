@@ -1,0 +1,15 @@
+---
+layout: default
+---
+| {% assign works = site.works | sort: 'date' | reverse %}
+.card-grid
+  | {% for work in works %}
+  | {% include card.pug title=work.title description=work.excerpt tags=work.tags url=work.url date=work.date %}
+  | {% endfor %}
+| {% assign tags = site.works | map: 'tags' | uniq %}
+.tags
+  ul
+    | {% for tag in tags %}
+    li {{ tag }}
+    | {% endfor %}
+| {{ content }}

@@ -1,0 +1,38 @@
+---
+layout: default
+title: My Blog
+permalink: /test
+---
+site:
+
+{% for s in site %}
+<span>{{ s }}, </span>
+{% endfor %}
+<br>
+posts:
+<ul class="two">
+  {% for post in site.posts %}
+  <h1>{{ post }} </h1>
+    <li>
+      <a href="{{ post.url }}">{{ post.title }}</a>
+    </li>
+  {% endfor %}
+</ul>
+works:
+<ul class="card-grid">
+  {%- assign works = site.works | sort: 'date' | reverse -%}
+  {% for work in works %}
+    {% include card.pug title=work.title description=work.excerpt tags=work.tags url=work.url date=work.date %}
+  {% endfor %}
+</ul>
+
+all tags uniq:
+{% assign tags = site.works | map: 'tags' | uniq %}
+<ul class="two">
+  {% for tag in tags %}
+    <li>{{ tag }}</li>
+  {% endfor %}
+</ul>
+
+pen:
+<a href="/pen/test/test.html">/pen/test/test.html</a>

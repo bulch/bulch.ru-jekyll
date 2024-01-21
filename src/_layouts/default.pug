@@ -1,0 +1,24 @@
+doctype
+html
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width")
+    title {{page.title}}
+    link(rel="stylesheet", href="{{ '/assets/css/normalize.css' | relative_url }}")
+    link(rel="stylesheet", href="{{ '/assets/css/main.css' | relative_url }}")
+    | {% for style in page.styles %}
+    link(rel="stylesheet", href="{{ style | relative_url }}")
+    | {% endfor %}
+    
+  body
+    header
+      .logo
+        a(href="/") bulch.ru
+      nav
+        li
+          a(href="/works") works
+    .wrapper
+      section {{content}}
+    | {% for script in page.scripts %}
+    script(src="{{ script | relative_url }}")
+    | {% endfor %}

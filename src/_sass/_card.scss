@@ -1,0 +1,73 @@
+$card-background: lighten($backgrond, 10%);
+$grid: 5.5rem;
+$card-title-text: lighten($orange, 10%);
+$card-description-text: $comments;
+$card-tag-text: lighten($yellow, 10%);
+
+.card-grid {
+  display: grid;
+ 	grid-template-columns: repeat(auto-fill, calc($grid*4));
+  grid-template-rows: repeat(auto-fit, calc($grid*6));
+  gap: calc($grid/2);
+	padding: calc($grid/5);
+}
+
+.card {
+  background-color: $card-background;
+  width: calc($grid*4);
+	max-width: calc($grid*4);
+	height: calc($grid*5);
+	max-height: calc($grid*5);
+	padding: calc($grid/5);
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	flex-direction: column;
+  &:hover {
+		background: lighten($card-background, 3%);
+	}
+  .title {
+    color: $card-title-text;
+    a {
+      text-decoration: none;
+      cursor: pointer;
+      color: inherit;
+    }
+    &:hover {
+      color: lighten($card-title-text, 3%);
+    }
+  }
+  .description {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+  }
+}
+
+.description {
+  color: $card-description-text;
+}
+.tags {
+  ul {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    li {
+      color: $card-tag-text;
+      background: lighten($card-background, 10%);
+      font-size: calc($grid/6);
+      padding: calc($grid/11)  calc($grid/11);
+      margin: calc($grid/24);
+      min-width: calc($grid/2);
+      text-align: center;
+      &:hover {
+        background: lighten($card-background, 3%);
+      }
+    }
+  }
+}

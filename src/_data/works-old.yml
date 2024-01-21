@@ -1,0 +1,408 @@
+- name: bulch.ru
+  description: мой личный сайт ) текущий сайт
+  website: https://bulch.ru/
+  tech:
+    [
+      html,
+      css,
+      github,
+      jukyll,
+    ]
+  date: 2018-03-01
+
+- name: 1ДМЦ - Первый детский медицинский центр
+  description: Сайт мигрировал с Joomla cms на Modx с сохранением всего функционала, перенос БД
+  website: https://1dmc.ru/
+  tech:
+    [
+      MySQL
+      html,
+      css,
+      js,
+      jquery,
+      php,
+      modx,
+      migrate joomla to modx,
+      modx snippets,
+      modx api
+    ]
+  date: 2018-12-01
+
+- name: Русский уголь
+  description: Красивый сайт с калькулятором стоимости и возможностью предварительного заказа древесного угля. Сайт закрылся, но часть переделана на nuxtjs и опубликована на gitlab pages
+  # website: http://sarugol.ru
+  website: https://bulch.gitlab.io/sarugol/
+  tech:
+    [
+      html,
+      css,
+      gulp,
+      pug,
+      stylus,
+      js,
+      jquery,
+      nuxtjs,
+      gitlab ci,
+      gitlab pages
+    ]
+  date: 2017-03-01
+
+
+- name: Федеральный проект по оказанию помощи должникам «Школа банкротства»
+  description: Посадочная страница, для продажи  книги инструкции по самостоятельному проведению процедуры банкротства физического лица
+  # website: http://azbukabankrotstva.ru/
+  tech:
+    [
+      html,
+      css,
+      gulp,
+      pug,
+      stylus,
+      js,
+      jquery,
+    ]
+  date: 2016-09-15
+
+- name: Федеральная Экспертная Служба
+  description: Сайт ФЭС по банкротству. С уклоном на статьи и новости банкротства. Не обновляется
+  # website: http://vbankrotstve.ru
+  tech:
+    [
+      html,
+      css,
+      gulp,
+      pug,
+      stylus,
+      js,
+      jquery,
+      php,
+      modx,
+    ]
+  date: 2016-08-20
+
+- name: Кредитный Адвокат
+  description: Корпоративный сайт для компании адвокатов
+  # website: http://kreditadvokat.ru
+  tech:
+    [
+      html,
+      css,
+      gulp,
+      pug,
+      stylus,
+      js,
+      jquery,
+      php,
+      modx,
+    ]
+  date: 2016-10-01
+
+- name: Лига арбитражных управляющих
+  description: Клон сайт Кредитный Адвокат находятся под одной cmf modx
+  # website: http://upravlyayushchiy.ru
+  tech:
+    [
+      html,
+      css,
+      gulp,
+      pug,
+      stylus,
+      js,
+      jquery,
+      php,
+      modx,
+    ]
+  date: 2016-11-16
+
+- name: лидерыправа.рф
+  description: Сайт на тильде. Регистрация в конкурсе лидерыправа
+  # website: http://лидерыправа.рф
+  tech:
+    [
+      tilda,
+    ]
+  date: 2017-11-16
+
+- name: Кондитерские изделия - artcake64
+  description: Сайт на тильде  для продажи тортиков и всяких вкусностей
+  # website: http://tort.artcake64.ru/
+  tech:
+    [
+      tilda,
+    ]
+  date: 2017-12-08
+
+- name: 2015 РОО «СОЮЗ ВОЕННЫХ МОРЯКОВ» Саратовское областное отделение
+  description: Сайт для фотоотчетов и новостной ленты
+  website: http://vmfsaratov.ru
+  tech:
+    [
+      html,
+      css,
+      js,
+      jquery,
+      php,
+      wordpress,
+    ]
+  date: 2015-02-22
+
+- name: Юкон-2016
+  description: Осенью 2016 года в Саратове состоялась ИТ-конференция! 
+    Посадочная страница, страница регистрации на конференцию.
+    Расписание конференции
+  website: http://2016.youcon.ru/
+  tech:
+    [
+      html,
+      css,
+      js,
+      jquery,
+      Liquid,
+      Jekyll,
+      github-pages,
+    ]
+  date: 2016-05-09
+
+- name: Официальная регистрация Представителей Avon
+  description: Стань представителем AVON прямо сейчас!
+  # website: http://avon-centre.ru/
+  tech:
+    [
+      html,
+      css,
+      sass,
+      prepros,
+      js,
+      jquery,
+    ]
+  date: 2016-11-27
+
+- name: Smog — издание об удобном Саратове
+  description: Сайт издания, для многих пользователей с модерацией, 
+    визуальными редакторами и кучей плагинов для вордпресс. 
+    Домен http://smogmag.ru/ не был продлен
+  # website: http://smogmag.ru/
+  tech:
+    [
+      html,
+      css,
+      js,
+      jquery,
+      php,
+      wordpress,
+    ]
+  date: 2015-03-14
+
+- name: Услуги участникам госконтрактов Банковские гарантии
+  description: Сайт с калькулятором расчета стоимости гарантий по 44-ФЗ,  
+    223-ФЗ,  615-ПП (185-ФЗ)
+  website: http://finsp.ru/
+  tech:
+    [
+      html,
+      css,
+      gulp,
+      pug,
+      stylus,
+      js,
+      jquery,
+      php,
+      modx,
+    ]
+  date: 2017-10-20
+
+- name: Адвокат Ягофаров корпоративный сайт
+  description: Большой корпоративный сайт для адвоката с большим количеством правовой информации и опытом компании
+  website: https://yagofarov.ru/
+  tech:
+    [
+      html,
+      css,
+      gulp,
+      pug,
+      stylus,
+      js,
+      jquery,
+      php,
+      modx,
+    ]
+  date: 2016-12-10
+
+- name: Адвокат Ягофаров сайт визитка
+  description: Личный сайт визитка адвоката
+  website: https://advokatyagofarov.ru/
+  tech:
+    [
+      html,
+      css,
+      sass,
+      prepros,
+      js,
+      jquery,
+    ]
+  date: 2017-01-20
+
+- name: Банкротство физических лиц -  Адвокат Ягофаров
+  description: Посадочная страница для банкротов. Много полезной информации и возможность отправить заявку. Сделан для 3 городов.
+  website: https://bfl.yagofarov.ru/
+  tech:
+    [
+      html,
+      css,
+      sass,
+      prepros,
+      js,
+      jquery,
+    ]
+  date: 2017-02-10
+
+- name: Взыскание неустойки с застройщиков - Адвокат Ягофаров
+  description: Посадочная страница с небольшим калькулятором неустойки. Сделан для 3 городов.
+  website: https://ddu.yagofarov.ru/
+  tech:
+    [
+      html,
+      css,
+      sass,
+      prepros,
+      js,
+      jquery,
+    ]
+  date: 2017-02-20
+
+- name: Строительство хаммамов, бань, бассейнов и спа-зон в Саратове и области
+  description: c 2016 до 2018 года сайт потерпел 3 редизайна
+  website: https://hamam64.ru/
+  tech:
+    [
+      html,
+      css,
+      gulp,
+      js,
+      jquery,
+      php,
+      modx,
+    ]
+  date: 2016-10-20
+
+- name: Услуги по сертификации — ООО «Вектор гарантии качества»
+  description: Услуги сертификации в Саратове - помощь в разработке и оформлении документации, 
+    а также внедрении систем менеджмента в процессы Вашей организации.
+    Простой сайт на modx. 
+    Модульная верстка, унивирсальные шаблоны - дают возможность легко проктировать 
+    и создавать новые страницы с презентацией услуг
+  website: https://vektor-gk.ru/
+  tech:
+    [
+      html,
+      scss,
+      js,
+      php,
+      modx api,
+      pdotools,
+    ]
+  date: 2019-11-01
+
+- name: Лесная карта - Комплекс программных решений для департаментов лесного хозяйства и предприятий лесной отрасли
+  description: landing page мобильного приложения. Работает полностью на nodejs
+  # website: http://gis-forest.ru/
+  tech:
+    [
+      nodejs,
+      nuxtjs,
+      vue,
+      nodemailer,
+      js,
+      gitlab ci,
+    ]
+  date: 2019-10-01
+
+- name: Новости Саратова сегодня
+  description: 
+    поддержка с 12.18 до 10.19 и с 10.20 до настоящее, 
+    html, css, js, bitrix, php, api youtube, api yandex,
+    yandex turbo, google amp,
+    работа с рекламой, обновление баннеров и графики на сайте
+  website: https://saratov24.tv/
+  tech:
+    [
+      html,
+      css,
+      js,
+      bitrix,
+      php,
+      bash,
+      bitrix api,
+      youtube api,
+    ]
+  date: 2020-10-01
+
+- name: «Виктория Девелопмент»
+  description: Корпоративный сайт компании «Виктория Девелопмент».
+    bitrix, шаблон для создания других похожих сайтов, 
+    ипотечный калькулятор(js)+интеграция в битрикс(iblock, bitrix api)
+  website: https://v-vd.ru/
+  tech:
+    [
+      bitrix,
+      php,
+      js,
+      bitrix api,
+    ]
+  date: 2019-12-01
+
+- name: Жилой комплекс Серебро
+  description: Сайт по продажи квартир в новых домах,
+    bitrix, шаблон для создания других похожих сайтов, 
+    ипотечный калькулятор(js)+интеграция в битрикс(iblock, bitrix api),
+    шахматка(вывод квартир в виде шахматной доски с возможностью фильтрации 
+    и изменениями статусов), парсер xls to csv, xsl to array(php), csv to array(php)
+  website: https://www.gkserebro.ru/
+  tech:
+    [
+      bitrix,
+      php,
+      js,
+      bitrix api,
+    ]
+  date: 2019-05-01
+
+- name: Жилой комплекс Высоково
+  description: Сайт по продажи квартир в новых домах, bitrix, шаблон для создания других похожих сайтов, ипотечный калькулятор(js)+интеграция в битрикс(iblock, bitrix api), шахматка(вывод квартир в виде шахматной доски с возможностью фильтрации и изменениями статусов), парсер xls to csv, xsl to array(php), csv to array(php)
+  website: http://gkvysokovo.ru/
+  tech:
+    [
+      bitrix,
+      php,
+      js,
+      bitrix api,
+    ]
+  date: 2019-05-01
+
+- name: Медовые радости | Интернет-магазин мёда
+  description: modx сайт каталог с заявками на покупку без использования minishop
+  website: http://medradost.ru/
+  tech:
+    [
+      js,
+      php,
+      modx api,
+      pdotools,
+    ]
+  date: 2019-02-01
+
+- name: РосДорога - Зарабатывай с помощью регистратора
+  description:  Сайт на modx+minishop был разработан свой модуль(modx api) с интерфейсом для админки(exjs), ну и верстка(html,css,js)
+  website: http://xn--80afc3bbakdg.xn--p1ai/
+  tech:
+    [
+      html,
+      css,
+      js,
+      php,
+      modx,
+      minishop,
+      modx api,
+      extjs,
+    ]
+  date: 2019-01-20
