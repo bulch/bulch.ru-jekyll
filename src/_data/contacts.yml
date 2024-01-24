@@ -1,0 +1,27 @@
+---
+- name: Telegram
+  description: Мой Telegram
+  url: https://bulch.t.me/
+
+- name: Telegram группа illumination_web
+  description: |
+    Будьте в курсе всех событий в мире IT, программирования, дизайна и математики! 
+    Мы предлагаем самые свежие новости и полезные ссылки. 
+    Присоединяйтесь к нам и откройте для себя новый мир возможностей! 
+  url: https://illumination_web.t.me/
+
+- name: CodePen
+  description: Мой CodePen
+  url: https://codepen.io/bulch
+
+- name: GitHub
+  description: Мой GitHub
+  url: https://github.com/bulch
+
+- name: GitLab
+  description: Мой GitLab
+  url: https://gitlab.com/bulch
+
+- name: HH.ru
+  description: Мой hh
+  url: https://hh.ru/resume/c6e5f4d0ff0ba4e6040039ed1f465a54314549

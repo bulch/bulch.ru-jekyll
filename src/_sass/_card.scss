@@ -1,52 +1,72 @@
+$max-card-description-line: 3;
+// Colors
+// $orange - global src/_sass/_variables.scss
+$title-text: lighten($orange, 10%);
+// $comments - global src/_sass/_variables.scss
+$description-text: $comments;
+// $yellow - global src/_sass/_variables.scss
+$tag-text: lighten($yellow, 10%);
+// $backgrond - global src/_sass/_variables.scss
 $card-background: lighten($backgrond, 10%);
-$grid: 5.5rem;
-$card-title-text: lighten($orange, 10%);
-$card-description-text: $comments;
-$card-tag-text: lighten($yellow, 10%);
 
-.card-grid {
-  display: grid;
- 	grid-template-columns: repeat(auto-fill, calc($grid*4));
-  grid-template-rows: repeat(auto-fit, calc($grid*6));
-  gap: calc($grid/2);
-	padding: calc($grid/5);
+.title {
+  color: $title-text;
+  a {
+    text-decoration: none;
+    cursor: pointer;
+    color: inherit;
+  }
+  &:hover {
+    color: lighten($title-text, 3%);
+  }
 }
-
+.description {
+  color: $description-text;
+  &:hover {
+    color: lighten($description-text, 3%);
+  }
+}
+.tags {
+  color: $tag-text;
+  ul {
+    li {
+      color: $tag-text;
+      background: lighten($card-background, 10%);
+      &:hover {
+        background: lighten($card-background, 3%);
+      }
+    }
+  }
+}
 .card {
   background-color: $card-background;
-  width: calc($grid*4);
-	max-width: calc($grid*4);
-	height: calc($grid*5);
-	max-height: calc($grid*5);
-	padding: calc($grid/5);
+  &:hover {
+		background: lighten($card-background, 3%);
+	}
+}
+
+// Display
+.card-grid {
+  display: grid;
+ 	grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-auto-rows: 1fr;
+  gap: 20px;
+	padding: 0;
+  margin: 20px;
+}
+.card {
 	display: flex;
 	justify-content: space-between;
 	align-items: flex-start;
 	flex-direction: column;
-  &:hover {
-		background: lighten($card-background, 3%);
-	}
-  .title {
-    color: $card-title-text;
-    a {
-      text-decoration: none;
-      cursor: pointer;
-      color: inherit;
-    }
-    &:hover {
-      color: lighten($card-title-text, 3%);
-    }
-  }
+  padding: 20px;
+  margin: 0;
   .description {
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: $max-card-description-line;
     overflow: hidden;
   }
-}
-
-.description {
-  color: $card-description-text;
 }
 .tags {
   ul {
@@ -58,16 +78,9 @@ $card-tag-text: lighten($yellow, 10%);
     margin: 0;
     padding: 0;
     li {
-      color: $card-tag-text;
-      background: lighten($card-background, 10%);
-      font-size: calc($grid/6);
-      padding: calc($grid/11)  calc($grid/11);
-      margin: calc($grid/24);
-      min-width: calc($grid/2);
+      margin: 5px;
+      padding: 5px 10px;
       text-align: center;
-      &:hover {
-        background: lighten($card-background, 3%);
-      }
     }
   }
 }

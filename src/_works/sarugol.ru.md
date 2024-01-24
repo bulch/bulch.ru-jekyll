@@ -13,6 +13,7 @@ tags:
   - js
   - jquery
   - nuxtjs
+  - gitlab
   - gitlab ci/cd
   - gitlab pages
 urls:

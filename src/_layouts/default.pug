@@ -9,7 +9,6 @@ html
     | {% for style in page.styles %}
     link(rel="stylesheet", href="{{ style | relative_url }}")
     | {% endfor %}
-    
   body
     header
       .logo
@@ -19,6 +18,15 @@ html
           a(href="/works") works
     .wrapper
       section {{content}}
+    footer
+      div 
+        p Сайт создан с помощью <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> и <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>. Весь код размещён на <a href="https://github.com/bulch/" target="_blank">Github</a>
+      div.tags
+        ul
+          | {% for contact in site.data.contacts %}
+          li
+            a(href="{{ contact.url }}", title="{{ contacts.description }}", target="_blank") {{ contact.name }}
+          | {% endfor %}
     | {% for script in page.scripts %}
     script(src="{{ script | relative_url }}")
     | {% endfor %}
