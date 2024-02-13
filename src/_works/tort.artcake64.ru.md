@@ -6,5 +6,6 @@ categories: web
 excerpt_separator: <!--readmore-->
 tags:
   - tilda
+published_on_main: false
 ---
 Сайт на тильде  для продажи тортиков и всяких вкусностей

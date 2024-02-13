@@ -15,5 +15,6 @@ tags:
   - php
   - modx
   - modx api
+published_on_main: false
 ---
 Клон сайт Кредитный Адвокат находятся под одной cmf modx

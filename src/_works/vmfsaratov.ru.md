@@ -13,5 +13,6 @@ tags:
   - php
   - wordpress
   - wordpress api
+published_on_main: false
 ---
 Сайт для фотоотчетов и новостной ленты

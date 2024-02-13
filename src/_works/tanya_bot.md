@@ -14,5 +14,6 @@ tags:
   - jenkins
   - gitlab
   - api telegram
+published_on_main: false
 ---
 Бот с оповещениями, работа с трекерами задач, копирование задач из asana в yandex tracker, вывод сообщений по фильтрам и т.д.

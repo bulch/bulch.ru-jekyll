@@ -12,5 +12,6 @@ tags:
   - jquery
   - php
   - modx
+published_on_main: false
 ---
 c 2016 до 2018 года сайт потерпел 3 редизайна

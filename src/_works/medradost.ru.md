@@ -12,5 +12,6 @@ tags:
   - modx
   - modx api
   - pdotools
+published_on_main: false
 ---
 modx сайт каталог с заявками на покупку без использования minishop

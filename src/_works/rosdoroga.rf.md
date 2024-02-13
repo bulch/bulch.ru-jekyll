@@ -13,5 +13,6 @@ tags:
   - modx api
   - minishop
   - extjs
+published_on_main: false
 ---
 Сайт на modx+minishop был разработан свой модуль(modx api) с интерфейсом для админки(exjs), ну и верстка(html,css,js)

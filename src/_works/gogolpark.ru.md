@@ -11,6 +11,7 @@ tags:
   - vue
   - sass
   - webpack
+published_on_main: false
 ---
 Живите в ГОГОЛЬ ПАРК. Живите около метро. 
 

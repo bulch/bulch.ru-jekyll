@@ -11,6 +11,7 @@ tags:
   - github pages
   - github actions
   - jekyll
+published_on_main: true
 ---
 ## Личный сайт
 

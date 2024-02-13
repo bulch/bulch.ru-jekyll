@@ -15,5 +15,6 @@ tags:
   - nuxtjs
   - vue
   - gitlab ci/cd
+published_on_main: false
 ---
 landing page мобильного приложения. Работает полностью на nodejs
