@@ -42,8 +42,16 @@ jobs:
           find ./dist -maxdepth 10 -type f -name "*.png" | awk '{ print "\""$0"\""}' | xargs -n 1 optipng | true
           find ./dist -maxdepth 10 -type f -name "*.jpg" | awk '{ print "\""$0"\""}' | xargs -n 1 jpegoptim --strip-all | true
 
-      - name: 🚀 Deploy
-        uses: peaceiris/actions-gh-pages@v3
+      # - name: 🚀 Deploy
+      #   uses: peaceiris/actions-gh-pages@v3
+      #   with:
+      #     github_token: ${{ secrets.GITHUB_TOKEN }}
+      #     publish_dir: ./dist
+      - name: 🚀 Publish to Cloudflare Pages
+        uses: cloudflare/pages-action@v1
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: d85f990fb58850151a51d4831fa1d2d8
+          projectName: bulch.ru-jekyll
+          directory: dist
+          wranglerVersion: '3'
