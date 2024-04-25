@@ -9,8 +9,8 @@ url: "htps://bulch.ru" # the base hostname & protocol for your site, e.g. http:/
 github_username:  bulch
 
 # Where things are
-source              : ./src
-destination         : ./dist
+source              : src
+destination         : dist
 # plugins_dir         : _plugins # takes an array of strings and loads plugins in that order
 layouts_dir         : _layouts
 data_dir            : _data
