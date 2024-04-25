@@ -32,25 +32,33 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: version
-        id: version
-        run: |
-          tag=${GITHUB_REF/refs\/tags\//}
-          version=${tag#v}
-          major=${version%%.*}
-          echo "tag=${tag}" >> $GITHUB_OUTPUT
-          echo "version=${version}" >> $GITHUB_OUTPUT
-          echo "major=${major}" >> $GITHUB_OUTPUT
+      - id: semver-tag
+        uses: gandarez/semver-action@master
+        with:
+          branching_model: "git-flow"
+          prefix: "v"
+          prerelease_id: "alpha"
+          main_branch_name: "main"
+          develop_branch_name: "dev"
+          patch_regex: "^fix/.+"
+          minor_regex: "^feat/.+"
+          major_regex: "^major/.+"
+          build_regex: "^build/.+"
+          hotfix_regex: "^hotfix/.+"
+          exclude_regex: "^ignore/.+"
+
+      - name: "Created tag"
+        run: echo "tag ${{ steps.semver-tag.outputs.semver_tag }}"
       
       - name: 🚀 force update major tag
         run: |
-          git tag v${{ steps.version.outputs.major }} ${{ steps.version.outputs.tag }} -f
-          git push origin refs/tags/v${{ steps.version.outputs.major }} -f
+          git tag v${{ steps.semver-tag.outputs.semver_tag }} -f
+          git push origin refs/tags/v${{ steps.semver-tag.outputs.semver_tag }} -f
       
       - name: 🚀 Release version
         uses: release-drafter/release-drafter@master
         with:
-          version: ${{ steps.version.outputs.version }}
+          version: ${{ steps.semver-tag.outputs.semver_tag }}
           publish: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -60,4 +68,4 @@ jobs:
         with:
           token: ${{ secrets.TELEGRAM_TOKEN }}
           to: ${{ secrets.TELEGRAM_CHAT_ID }}
-          message: "New vertsion v${{ steps.version.outputs.major }}"
+          message: "New vertsion v${{ steps.semver-tag.outputs.semver_tag }}"
