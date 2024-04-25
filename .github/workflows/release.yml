@@ -19,12 +19,15 @@ jobs:
   on-success:
     runs-on: ubuntu-latest
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
+
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
+
     permissions:
       pages: write
       id-token: write
+
     steps:
       - uses: actions/checkout@v4
 
@@ -37,12 +40,6 @@ jobs:
           echo "tag=${tag}" >> $GITHUB_OUTPUT
           echo "version=${version}" >> $GITHUB_OUTPUT
           echo "major=${major}" >> $GITHUB_OUTPUT
-      
-      - name: 🚀 Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
-        with:
-          artifact_name: github-pages
       
       - name: 🚀 Release version
         uses: release-drafter/release-drafter@master
