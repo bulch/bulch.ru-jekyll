@@ -1,11 +1,11 @@
 name: Release
 on:
   push:
-    tags:
-      - v*.*.*
+    branches:
+      - master
 
 jobs:
-  release:
+  draft-release:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -24,11 +24,5 @@ jobs:
         uses: release-drafter/release-drafter@master
         with:
           version: ${{ steps.version.outputs.version }}
-          publish: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      
-      - name: force update major tag
-        run: |
-          git tag v${{ steps.version.outputs.major }} ${{ steps.version.outputs.tag }} -f
-          git push origin refs/tags/v${{ steps.version.outputs.major }} -f
