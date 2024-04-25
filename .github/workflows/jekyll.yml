@@ -8,18 +8,15 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
 
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: 📂 Setup
         uses: actions/checkout@v4
       
       - name: 💉 Install dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get -y install jpegoptim optipng brotli
-          npm install --global pug
+        run: npm install --global pug
 
       - name: 💎 Setup ruby
         uses: ruby/setup-ruby@v1
@@ -32,6 +29,12 @@ jobs:
           enable_cache: true
           jekyll_src: src
           custom_opts: '--config _config.yml'
+  
+  optimized:
+    runs-on: ubuntu-latest
+    steps:
+      - name:  💉 Install dependencies
+        run: sudo apt-get update && sudo apt-get -y install jpegoptim optipng brotli
 
       - name: 🍬 Optimized-builder - js, css, html to gz
         run: find ./_site -maxdepth 10 -type f -name "*.js" -o -name "*.html" -o -name "*.css" | awk '{ print "\""$0"\""}' | xargs -n 1 gzip -9k
