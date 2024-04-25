@@ -50,16 +50,16 @@ jobs:
           name: jekyll_site
 
       - name: 🍬 Optimized-builder - js, css, html to gz
-        run: find ./_site -maxdepth 10 -type f -name "*.js" -o -name "*.html" -o -name "*.css" | awk '{ print "\""$0"\""}' | xargs -n 1 gzip -9k
+        run: find ./ -maxdepth 10 -type f -name "*.js" -o -name "*.html" -o -name "*.css" | awk '{ print "\""$0"\""}' | xargs -n 1 gzip -9k
 
       - name: 🍬 Optimized-builder - js, css, html to brotli
-        run: find ./_site -maxdepth 10 -type f -name "*.js" -o -name "*.html" -o -name "*.css" | awk '{ print "\""$0"\""}' | xargs -n 1 brotli -Zk
+        run: find ./ -maxdepth 10 -type f -name "*.js" -o -name "*.html" -o -name "*.css" | awk '{ print "\""$0"\""}' | xargs -n 1 brotli -Zk
 
       - name: 🍬 Optimized-builder - image png to optipng
-        run: find ./_site -maxdepth 10 -type f -name "*.png" | awk '{ print "\""$0"\""}' | xargs -n 1 optipng | true
+        run: find ./ -maxdepth 10 -type f -name "*.png" | awk '{ print "\""$0"\""}' | xargs -n 1 optipng | true
 
       - name: 🍬 Optimized-builder - image jpg to jpegoptim
-        run: find ./_site -maxdepth 10 -type f -name "*.jpg" | awk '{ print "\""$0"\""}' | xargs -n 1 jpegoptim --strip-all | true
+        run: find ./ -maxdepth 10 -type f -name "*.jpg" | awk '{ print "\""$0"\""}' | xargs -n 1 jpegoptim --strip-all | true
       
       - name: ⏰ Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
