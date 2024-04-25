@@ -42,6 +42,9 @@ jobs:
         # however this may be very slow for large repositories!
         # with:
         # fetch-depth: '0'
+      
+      - name: Install Pug
+        run: npm install --global pug
 
       - name: 💎 setup ruby
         uses: ruby/setup-ruby@v1
