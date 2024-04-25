@@ -11,7 +11,8 @@ on:
   workflow_dispatch: # Allows a run of this workflow to be triggerred manually from the Actions tab
 
 jobs:
-  jekyll:
+  build:
+
     runs-on: ubuntu-latest
     steps:
       - name: 📂 Setup
@@ -41,32 +42,24 @@ jobs:
           find ./dist -maxdepth 10 -type f -name "*.js" -o -name "*.html" -o -name "*.css" | awk '{ print "\""$0"\""}' | xargs -n 1 brotli -Zk
           find ./dist -maxdepth 10 -type f -name "*.png" | awk '{ print "\""$0"\""}' | xargs -n 1 optipng | true
           find ./dist -maxdepth 10 -type f -name "*.jpg" | awk '{ print "\""$0"\""}' | xargs -n 1 jpegoptim --strip-all | true
+      
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
 
-      # - name: 🚀 Deploy
-      #   uses: peaceiris/actions-gh-pages@v3
-      #   with:
-      #     github_token: ${{ secrets.GITHUB_TOKEN }}
-      #     publish_dir: ./dist
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    needs: build
 
-      - name: 🚀 Publish to Cloudflare Pages
-        uses: cloudflare/pages-action@v1
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: d85f990fb58850151a51d4831fa1d2d8
-          projectName: bulch.ru-jekyll
-          directory: dist
-          # Optional: Enable this if you want to have GitHub Deployments triggered
-          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
-          # Optional: Switch what branch you are publishing to.
-          # By default this will be the branch which triggered this workflow
-          branch: master
-          # Optional: Change the working directory
-          # workingDirectory: my-site
-          # Optional: Change the Wrangler version, allows you to point to a specific version or a tag such as `beta`
-          wranglerVersion: '3'
-      - name: Outputs
-        run: |
-          echo "ID: ${{ steps.publish.outputs.id }}"
-          echo "URL: ${{ steps.publish.outputs.url }}"
-          echo "Environment: ${{ steps.publish.outputs.environment }}"
-          echo "Alias: ${{ steps.publish.outputs.alias }}"
+    # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
+    permissions:
+      pages: write      # to deploy to Pages
+      id-token: write   # to verify the deployment originates from an appropriate source
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4 

@@ -10,7 +10,7 @@ github_username:  bulch
 
 # Where things are
 source              : src
-destination         : dist
+destination         : _site
 # plugins_dir         : _plugins # takes an array of strings and loads plugins in that order
 layouts_dir         : _layouts
 data_dir            : _data
