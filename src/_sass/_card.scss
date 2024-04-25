@@ -58,7 +58,6 @@ $card-background: lighten($backgrond, 10%);
 }
 .card {
 	display: flex;
-	// justify-content: space-between;
   justify-content: start;
 	align-items: flex-start;
 	flex-direction: column;

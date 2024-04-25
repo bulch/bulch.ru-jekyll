@@ -1,5 +1,5 @@
 doctype
-html
+html(lang="ru")
   head
     meta(charset="UTF-8")
     meta(name="viewport" content="width=device-width")
@@ -12,12 +12,12 @@ html
   body
     header
       .logo
-        a(href="/") bulch.ru
+        a(href="/") {% include glitch.pug text="bulch" %}
       nav
-        li
-          a(href="/works") works
-    .wrapper
-      section {{content}}
+        ul
+          li
+            a(href="/works") works
+    .wrapper {{content}}
     footer
       div 
         p Сайт создан с помощью <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> и <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>. Весь код размещён на <a href="https://github.com/bulch/" target="_blank">Github</a>

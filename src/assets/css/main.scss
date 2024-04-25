@@ -12,3 +12,17 @@
   }
 }
 
+.logo {
+  a {
+    text-decoration: none;
+    color: white;
+    font-size: 42px;
+    &:hover {
+      color: darken($color: $backgrond, $amount: 5);
+      cursor: pointer;
+    }
+  }
+}
+.wrapper {
+  margin: auto 2%;
+}

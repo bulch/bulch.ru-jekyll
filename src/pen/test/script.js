@@ -1,3 +1,4 @@
+// configs
 const apiPath = 'https://assessing-floor-server.ykdev.ru'
 let loading=false, loaded = false, file, url, imageWidth, imageHeight, poligons;
 const placeholderOffset = 300;
@@ -22,6 +23,7 @@ gui.add(control,'url').onChange(addUrlFile);
 gui.add(control,'width', 0, 300).onChange(editWidth);
 gui.addColor(control, 'fill').onChange(editFill);
 
+// func
 function editWidth() {
   const box = document.querySelector('.container');
   // box.setAttribute('style', `width: ${control.width}%`)
