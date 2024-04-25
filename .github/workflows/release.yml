@@ -1,29 +1,28 @@
-name: Release
+name: Draft release
 on:
-  release:
-    types: [released]
-  workflow_dispatch:
-    inputs:
-      TAG_NAME:
-        description: "Tag name that the major tag will point to"
-        required: true
-
-env:
-  TAG_NAME: ${{ github.event.inputs.TAG_NAME || github.event.release.tag_name }}
-
-permissions:
-  contents: write
+  push:
+    branches:
+      - master
 
 jobs:
-  update_tag:
-    name: Update the major tag to include the ${{ github.event.inputs.TAG_NAME || github.event.release.tag_name }} changes
+  draft-release:
     runs-on: ubuntu-latest
-    environment:
-      # Note: this environment is protected
-      name: Release
     steps:
-      - name: Update the ${{ env.TAG_NAME }} tag
-        id: update-major-tag
-        uses: actions/publish-action@v0.3.0
+      - uses: actions/checkout@v4
+
+      - name: version
+        id: version
+        run: |
+          tag=${GITHUB_REF/refs\/tags\//}
+          version=${tag#v}
+          major=${version%%.*}
+          echo "tag=${tag}" >> $GITHUB_OUTPUT
+          echo "version=${version}" >> $GITHUB_OUTPUT
+          echo "major=${major}" >> $GITHUB_OUTPUT
+      
+      - uses: release-drafter/release-drafter@master
         with:
-          source-tag: ${{ env.TAG_NAME }}
+          version: ${{ steps.version.outputs.version }}
+          publish: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
