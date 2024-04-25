@@ -1,4 +1,4 @@
-name: 🚀 Deploy to GitHub Pages
+name: 🚀 Release to GitHub Pages
 
 on:
   push:
@@ -19,6 +19,6 @@ jobs:
       id-token: write
     runs-on: ubuntu-latest
     steps:
-      - name: 🚀 Deploy to GitHub Pages
+      - name: 🚀 Release to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4 
