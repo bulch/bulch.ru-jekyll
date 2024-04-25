@@ -29,12 +29,27 @@ jobs:
           enable_cache: true
           jekyll_src: src
           custom_opts: '--config _config.yml'
+      
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: jekyll_site
+          path: _site
+          retention-days: 5
   
   optimized:
     runs-on: ubuntu-latest
     steps:
       - name:  💉 Install dependencies
         run: sudo apt-get update && sudo apt-get -y install jpegoptim optipng brotli
+
+      - name: Download a single artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: jekyll_site
+      
+      - name: debug
+        run: la -al
 
       - name: 🍬 Optimized-builder - js, css, html to gz
         run: find ./_site -maxdepth 10 -type f -name "*.js" -o -name "*.html" -o -name "*.css" | awk '{ print "\""$0"\""}' | xargs -n 1 gzip -9k
