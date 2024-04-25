@@ -4,9 +4,10 @@ on:
   workflow_run:
     workflows: 
       - Build
-      - Pre-Release
     types:
       - completed
+    branches:
+      - 'master'
 
 jobs:
   on-failure:

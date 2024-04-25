@@ -2,9 +2,12 @@ name: Pre-Release
 
 on:
   workflow_run:
-    workflows: [Build]
+    workflows: 
+      - Build
     types:
       - completed
+    branches:
+      - 'master'
 
 jobs:
   on-failure:
