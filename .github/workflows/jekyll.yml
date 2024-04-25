@@ -39,6 +39,7 @@ jobs:
   
   optimized:
     runs-on: ubuntu-latest
+    needs: build
     steps:
       - name:  💉 Install dependencies
         run: sudo apt-get update && sudo apt-get -y install jpegoptim optipng brotli
@@ -70,7 +71,7 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    needs: build
+    needs: optimized
     permissions:
       pages: write
       id-token: write
