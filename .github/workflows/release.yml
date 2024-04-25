@@ -31,6 +31,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - id: semver-tag
         uses: gandarez/semver-action@master
@@ -52,8 +54,8 @@ jobs:
       
       - name: 🚀 force update major tag
         run: |
-          git tag v${{ steps.semver-tag.outputs.semver_tag }} -f
-          git push origin refs/tags/v${{ steps.semver-tag.outputs.semver_tag }} -f
+          git tag ${{ steps.semver-tag.outputs.semver_tag }} -f
+          git push origin refs/tags/${{ steps.semver-tag.outputs.semver_tag }} -f
       
       - name: 🚀 Release version
         uses: release-drafter/release-drafter@master
