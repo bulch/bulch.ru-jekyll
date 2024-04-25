@@ -2,7 +2,6 @@
 **/.jekyll-cache
 **/.jekyll-metadata
 **/vendor
-**/*.lock
 **/.sass-cache
 **/node_modules
 **/package-lock.json
