@@ -48,9 +48,6 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: jekyll_site
-      
-      - name: debug
-        run: la -al
 
       - name: 🍬 Optimized-builder - js, css, html to gz
         run: find ./_site -maxdepth 10 -type f -name "*.js" -o -name "*.html" -o -name "*.css" | awk '{ print "\""$0"\""}' | xargs -n 1 gzip -9k
