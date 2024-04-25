@@ -14,35 +14,35 @@ jobs:
   jekyll:
     runs-on: ubuntu-latest
     steps:
-      - name: 📂 setup
+      - name: 📂 Setup
         uses: actions/checkout@v3
       
-      - name: Install Pug
-        run: npm install --global pug
+      - name: 💉 Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get -y install jpegoptim optipng brotli
+          npm install --global pug
 
-      - name: 💎 setup ruby
+      - name: 💎 Setup ruby
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.0.2 # can change this to whatever version you prefer
 
-      - name: 🔨 install dependencies & build site
+      - name: 🔨 Build site
         uses: limjh16/jekyll-action-ts@v2
         with:
           enable_cache: true
           jekyll_src: src
           custom_opts: '--config _config.yml'
 
-      - name: optimized-builder
+      - name: 🍬 Optimized-builder
         run: |
-          sudo apt-get update
-          sudo apt-get -y install jpegoptim optipng brotli
-          RUN find ./dist -maxdepth 10 -type f -name "*.js" -o -name "*.html" -o -name "*.css" | awk '{ print "\""$0"\""}' | xargs -n 1 gzip -9k
-          RUN find ./dist -maxdepth 10 -type f -name "*.js" -o -name "*.html" -o -name "*.css" | awk '{ print "\""$0"\""}' | xargs -n 1 brotli -Zk
-          RUN find ./dist -maxdepth 10 -type f -name "*.png" | awk '{ print "\""$0"\""}' | xargs -n 1 optipng | true
-          RUN find ./dist -maxdepth 10 -type f -name "*.jpg" | awk '{ print "\""$0"\""}' | xargs -n 1 jpegoptim --strip-all | true
+          find ./dist -maxdepth 10 -type f -name "*.js" -o -name "*.html" -o -name "*.css" | awk '{ print "\""$0"\""}' | xargs -n 1 gzip -9k
+          find ./dist -maxdepth 10 -type f -name "*.js" -o -name "*.html" -o -name "*.css" | awk '{ print "\""$0"\""}' | xargs -n 1 brotli -Zk
+          find ./dist -maxdepth 10 -type f -name "*.png" | awk '{ print "\""$0"\""}' | xargs -n 1 optipng | true
+          find ./dist -maxdepth 10 -type f -name "*.jpg" | awk '{ print "\""$0"\""}' | xargs -n 1 jpegoptim --strip-all | true
 
-
-      - name: 🚀 deploy
+      - name: 🚀 Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
