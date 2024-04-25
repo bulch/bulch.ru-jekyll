@@ -1,4 +1,4 @@
-name: Build and deploy jekyll site in github-pages
+name: Build and deploy jekyll site
 
 on:
   push:
@@ -14,6 +14,11 @@ jobs:
     steps:
       - name: 📂 Setup
         uses: actions/checkout@v4
+      
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18.16.0'
+          cache: 'npm'
       
       - name: 💉 Install dependencies
         run: npm install --global pug
