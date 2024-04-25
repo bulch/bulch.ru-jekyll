@@ -41,6 +41,11 @@ jobs:
           echo "version=${version}" >> $GITHUB_OUTPUT
           echo "major=${major}" >> $GITHUB_OUTPUT
       
+      - name: 🚀 force update major tag
+        run: |
+          git tag v${{ steps.version.outputs.major }} ${{ steps.version.outputs.tag }} -f
+          git push origin refs/tags/v${{ steps.version.outputs.major }} -f
+      
       - name: 🚀 Release version
         uses: release-drafter/release-drafter@master
         with:
@@ -48,11 +53,6 @@ jobs:
           publish: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      
-      - name: force update major tag
-        run: |
-          git tag v${{ steps.version.outputs.major }} ${{ steps.version.outputs.tag }} -f
-          git push origin refs/tags/v${{ steps.version.outputs.major }} -f
       
       - name: Send Telegram Message
         uses: cbrgm/telegram-github-action@v1
