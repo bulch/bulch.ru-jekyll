@@ -70,7 +70,7 @@ jobs:
           ### Useful if the file is exceptionally large, so formatting it takes a while.
           ### Also useful if HTML compression is enabled for that file / formatting messes it up.
           #
-          # jekyll_src: sample_site
+          jekyll_src: src
           ### If the jekyll website source is not in root, specify the directory. (in this case, sample_site)
           ### By default, this is not required as the action searches for a _config.yml automatically.
           #
