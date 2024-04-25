@@ -4,9 +4,11 @@ name: Release
 #     tags:
 #       - v*.*.*
 on:
-  push:
-    branches:
-      - master
+  workflow_run:
+    workflows: [Build and deploy jekyll site, Pre-Release]
+    types:
+      - completed
+
 
 jobs:
   release:
