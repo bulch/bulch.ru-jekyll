@@ -30,44 +30,29 @@ jobs:
       id-token: write
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout Code
+        uses: actions/checkout@v4
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - id: semver-tag
-        uses: gandarez/semver-action@master
+      - name: Get Next Version
+        id: semver
+        uses: ietf-tools/semver-action@v1
         with:
-          branching_model: "git-flow"
-          prefix: "v"
-          prerelease_id: "alpha"
-          main_branch_name: "master"
-          develop_branch_name: "develop"
-          patch_regex: "^fix/.+"
-          minor_regex: "^feat/.+"
-          major_regex: "^major/.+"
-          build_regex: "^build/.+"
-          hotfix_regex: "^hotfix/.+"
-          exclude_regex: "^ignore/.+"
-
-      - name: "Created tag"
-        run: echo "tag ${{ steps.semver-tag.outputs.semver_tag }}"
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: master
       
-      - name: 🚀 force update major tag
-        run: |
-          git tag ${{ steps.semver-tag.outputs.semver_tag }} -f
-          git push origin refs/tags/${{ steps.semver-tag.outputs.semver_tag }} -f
-      
-      - name: 🚀 Release version
+      - name: 🚀 Create Release version
         uses: release-drafter/release-drafter@master
         with:
-          version: ${{ steps.semver-tag.outputs.semver_tag }}
+          version: ${{ steps.semver.outputs.next }}
           publish: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       
       - name: Send Telegram Message
-        uses: cbrgm/telegram-github-action@v1
+        uses: cbrgm/telegram-github-action@v1 
         with:
           token: ${{ secrets.TELEGRAM_TOKEN }}
           to: ${{ secrets.TELEGRAM_CHAT_ID }}
-          message: "New vertsion v${{ steps.semver-tag.outputs.semver_tag }}"
+          message: "New vertsion ${{ steps.semver.outputs.next }}"
