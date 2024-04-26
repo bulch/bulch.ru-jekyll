@@ -1,90 +1,39 @@
 name: Release
-
 on:
-  workflow_run:
-    workflows: 
-      - Build
-    types:
-      - completed
-    branches:
-      - 'master'
+  push:
+    tags:
+      - v*.*.*
 
-permissions:
-  contents: read
+env:
+  HUSKY: '0'
 
 jobs:
-  on-failure:
+  build:
     runs-on: ubuntu-latest
-    if: ${{ github.event.workflow_run.conclusion == 'failure' }}
     steps:
-      - run: echo 'The triggering workflow failed'
-      - name: send telegram message on fail build
-        uses: appleboy/telegram-action@master
+      - name: Checkout
+        uses: actions/checkout@v3
         with:
-          to: ${{ secrets.TELEGRAM_CHAT_ID }}
-          token: ${{ secrets.TELEGRAM_TOKEN }}
-          message: |
-            ${{ github.actor }} conclusion: ${{ github.event.workflow_run.conclusion }}
-            
-            Repository: ${{ github.repository }}
-            
-            See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}
+          fetch-depth: 0
 
-  on-success:
-    runs-on: ubuntu-latest
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+      - name: version
+        id: version
+        run: |
+          tag=${GITHUB_REF/refs\/tags\//}
+          version=${tag#v}
+          major=${version%%.*}
+          echo "tag=${tag}" >> $GITHUB_OUTPUT
+          echo "version=${version}" >> $GITHUB_OUTPUT
+          echo "major=${major}" >> $GITHUB_OUTPUT
 
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-
-    permissions:
-      pages: write
-      id-token: write
-      # write permission is required to create a github release
-      contents: write
-      # write permission is required for autolabeler
-      # otherwise, read permission is required at least
-      pull-requests: write
-
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
-
-      - name: Semver
-        id: semver-tag
-        uses: gandarez/semver-action@master
+      - uses: release-drafter/release-drafter@master
         with:
-          branching_model: "git-flow"
-          prefix: "v"
-          prerelease_id: "alpha"
-          main_branch_name: "master"
-          develop_branch_name: "develop"
-          patch_regex: "^fix/.+"
-          minor_regex: "^feat/.+"
-          major_regex: "^major/.+"
-          build_regex: "^build/.+"
-          hotfix_regex: "^hotfix/.+"
-          exclude_regex: "^ignore/.+"
-
-      - name: "Created tag"
-        run: echo "tag ${{ steps.semver-tag.outputs.semver_tag }}"
-      
-      - name: 🚀 Create Release version
-        uses: release-drafter/release-drafter@v5
-        with:
-          version: ${{ steps.semver-tag.outputs.semver_tag }}
+          version: ${{ steps.version.outputs.version }}
           publish: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      
-      - name: send telegram message on push
-        uses: appleboy/telegram-action@master
-        with:
-          to: ${{ secrets.TELEGRAM_CHAT_ID }}
-          token: ${{ secrets.TELEGRAM_TOKEN }}
-          message: |
-            ${{ github.actor }}
-            Commit message: ${{ github.event.commits[0].message }}
-            Repository: ${{ github.repository }}
-            See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}
+
+      - name: force update major tag
+        run: |
+          git tag v${{ steps.version.outputs.major }} ${{ steps.version.outputs.tag }} -f
+          git push origin refs/tags/v${{ steps.version.outputs.major }} -f
