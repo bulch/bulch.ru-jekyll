@@ -6,7 +6,9 @@ categories: web
 excerpt_separator: <!--readmore-->
 tags:
   - html
+  - pug
   - css
+  - sass
   - github
   - github pages
   - github actions
