@@ -15,6 +15,12 @@ jobs:
     if: ${{ github.event.workflow_run.conclusion == 'failure' }}
     steps:
       - run: echo 'The triggering workflow failed'
+      - name: Send Telegram Message
+        uses: cbrgm/telegram-github-action@v1 
+        with:
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          to: ${{ secrets.TELEGRAM_CHAT_ID }}
+          message: "FAIL! Conclusion: ${{ github.event.workflow_run.conclusion }}"
 
   on-success:
     runs-on: ubuntu-latest
@@ -32,20 +38,30 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
-        with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Get Next Version
-        id: semver
-        uses: ietf-tools/semver-action@v1
+      - name: Semver
+        id: semver-tag
+        uses: gandarez/semver-action@master
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          branch: master
+          branching_model: "git-flow"
+          prefix: "v"
+          prerelease_id: "alpha"
+          main_branch_name: "master"
+          develop_branch_name: "develop"
+          patch_regex: "^fix/.+"
+          minor_regex: "^feat/.+"
+          major_regex: "^major/.+"
+          build_regex: "^build/.+"
+          hotfix_regex: "^hotfix/.+"
+          exclude_regex: "^ignore/.+"
+
+      - name: "Created tag"
+        run: echo "tag ${{ steps.semver-tag.outputs.semver_tag }}"
       
       - name: 🚀 Create Release version
         uses: release-drafter/release-drafter@master
         with:
-          version: ${{ steps.semver.outputs.next }}
+          version: ${{ steps.semver-tag.outputs.semver_tag }}
           publish: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -55,4 +71,4 @@ jobs:
         with:
           token: ${{ secrets.TELEGRAM_TOKEN }}
           to: ${{ secrets.TELEGRAM_CHAT_ID }}
-          message: "New vertsion ${{ steps.semver.outputs.next }}"
+          message: "New vertsion ${{ steps.semver-tag.outputs.semver_tag }}"
