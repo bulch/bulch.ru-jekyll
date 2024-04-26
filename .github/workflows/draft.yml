@@ -24,28 +24,20 @@ jobs:
           token: ${{ secrets.TELEGRAM_TOKEN }}
           message: |
             ${{ github.actor }} conclusion: ${{ github.event.workflow_run.conclusion }}
-            
             Repository: ${{ github.repository }}
-            
             See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}
 
   on-success:
     runs-on: ubuntu-latest
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
-
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-
     permissions:
       pages: write
       id-token: write
-      # write permission is required to create a github release
       contents: write
-      # write permission is required for autolabeler
-      # otherwise, read permission is required at least
       pull-requests: write
-
     steps:      
       - name: 🚀 Create Pre-Release version
         uses: release-drafter/release-drafter@v5
@@ -58,7 +50,7 @@ jobs:
           to: ${{ secrets.TELEGRAM_CHAT_ID }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
           message: |
-            ${{ github.actor }}
+            🍏 ${{ github.actor }}
             Commit message: ${{ github.event.commits[0].message }}
-            Repository: ${{ github.repository }}
-            See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}
+            Repository: https://github.com/${{ github.repository }}
+            Commit: https://github.com/${{ github.repository }}/commit/${{github.sha}}
