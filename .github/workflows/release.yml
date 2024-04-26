@@ -73,7 +73,6 @@ jobs:
       - name: 🚀 Create Release version
         uses: release-drafter/release-drafter@v5
         with:
-          version: ${{ steps.semver-tag.outputs.semver_tag }}
           publish: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
