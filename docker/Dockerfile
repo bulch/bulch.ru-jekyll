@@ -1,13 +1,11 @@
 FROM ruby:3.0.6-slim-bullseye as jekyll-builder
-RUN apt update && apt install -y --no-install-recommends \
+RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential git nodejs npm \
+    && gem update --system && gem install jekyll:4.3.3 bundler:2.5.5 && gem cleanup \
+    && npm install -g pug@3.0.2 \
     && rm -rf /var/lib/apt/lists/*
 WORKDIR /app
 COPY . .
-RUN gem update --system \
-    && gem install jekyll bundler \
-    && gem cleanup
-RUN npm install -g pug
 RUN bundle install
 RUN jekyll build
 
@@ -18,7 +16,7 @@ RUN apk update && apk add --no-cache \
     brotli optipng jpegoptim \
     && rm -rf /var/cache/apk/ && rm -rf /root/.cache && rm -rf /tmp/*
 WORKDIR /app
-COPY --from=jekyll-builder /app/dist/ /app
+COPY --from=jekyll-builder /app/_site/ /app
 # brotli
 RUN find /app/ -maxdepth 10 -type f -name "*.js" -o -name "*.html" -o -name "*.css" | awk '{ print "\""$0"\""}' | xargs -n 1 gzip -9k
 RUN find /app/ -maxdepth 10 -type f -name "*.js" -o -name "*.html" -o -name "*.css" | awk '{ print "\""$0"\""}' | xargs -n 1 brotli -Zk
@@ -46,3 +44,16 @@ HEALTHCHECK --interval=5s --timeout=2s \
   CMD nc -vz 127.0.0.1 8080 && echo 'true'  || exit 1
 EXPOSE 8080
 CMD ["nginx", "-g", "daemon off;"]
+
+## WIP
+# FROM nginx:stable-alpine3.19-slim
+# RUN apk update \
+#     && apk add --no-cache nginx-mod-http-brotli \
+#     && rm -rf /var/cache/apk/ && rm -rf /root/.cache && rm -rf /tmp/*
+# COPY ./docker/nginx/config/ /etc/nginx/
+# WORKDIR /var/www/html
+# COPY --chown=nginx:nginx --from=optimized-builder  /app /var/www/html
+# HEALTHCHECK --interval=5s --timeout=2s \
+#   CMD nc -vz 127.0.0.1 8080 && echo 'true'  || exit 1
+# EXPOSE 8080
+# CMD ["nginx", "-g", "daemon off;"]
