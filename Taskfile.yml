@@ -1,0 +1,84 @@
+version: '3'
+
+env:
+  IMAGE_NAME: bulch.ru-jekyll
+  DOCKERFILE_PATH: docker/Dockerfile
+  CONTAINER_NAME: bulch.ru
+  PUBLISH_PORT: 8080
+
+tasks:
+  build:
+    desc: Build container
+    cmds:
+      - docker build --tag {{ .IMAGE_NAME }} --file {{ .DOCKERFILE_PATH }} .
+
+  up:
+    desc: Up container
+    cmds:
+      - docker run --rm -p 127.0.0.1:{{ .PUBLISH_PORT }}:8080 --name {{ .CONTAINER_NAME }} {{ .IMAGE_NAME }}
+    interactive: true
+
+  hadolint:
+    desc: |
+      # hadolint
+      # Dockerfile linter, validate inline bash, written in Haskell 
+      # https://github.com/hadolint/hadolint
+    cmds:
+      - cmd: docker run --rm -i hadolint/hadolint < {{ .DOCKERFILE_PATH }}
+        ignore_error: true
+
+  dockle:
+    desc: |
+      # dockle
+      # Container Image Linter for Security, Helping build the Best-Practice Docker Image, Easy to start 
+      # https://github.com/goodwithtech/dockle
+    vars:
+      DOCKLE_VERSION:
+        sh: curl --silent "https://api.github.com/repos/goodwithtech/dockle/releases/latest" | grep '"tag_name":' | sed -E 's/.*"v([^"]+)".*/\1/' || "0.4.14"
+    cmds:
+      - docker run --rm --volume /var/run/docker.sock:/var/run/docker.sock --name Dockle "goodwithtech/dockle:v{{ .DOCKLE_VERSION }}" {{ .IMAGE_NAME }}
+  
+  grype:
+    desc: |
+      # grype
+      # A vulnerability scanner for container images and filesystems
+      # https://github.com/anchore/grype
+    cmds:
+      - docker run --rm --volume /var/run/docker.sock:/var/run/docker.sock --name Grype anchore/grype:latest {{ .IMAGE_NAME }}
+
+  syft:
+    desc: |
+      # syft
+      # A CLI tool and Go library for generating a Software Bill of Materials (SBOM) from container images and filesystems. Exceptional for vulnerability detection when used with a scanner like Grype.
+      # https://github.com/anchore/syft
+    cmds:
+      - docker run --rm --volume /var/run/docker.sock:/var/run/docker.sock --name Syft anchore/syft:latest {{ .IMAGE_NAME }}
+  
+  trivy:
+    desc: |
+      # trivy
+      # Find vulnerabilities, misconfigurations, secrets, SBOM in containers, Kubernetes, code repositories, clouds and more 
+      # https://github.com/aquasecurity/trivy
+    cmds:
+      - docker run --rm --volume /var/run/docker.sock:/var/run/docker.sock --name trivy aquasec/trivy image {{ .IMAGE_NAME }}
+  
+  gixy:
+    desc: |
+      # Gixy
+      # Gixy is a tool to analyze Nginx configuration. 
+      # The main goal of Gixy is to prevent security misconfiguration and automate flaw detection.
+      # https://github.com/yandex/gixy
+    vars:
+      NGINX_CONFIG_FOLDER: ./docker/nginx/config
+    cmds:
+      - docker run --rm --volume "{{ .NGINX_CONFIG_FOLDER }}:/etc/nginx/" --name Gixy yandex/gixy /etc/nginx/nginx.conf
+
+  test:
+    desc: Run all test
+    cmds:
+      - task: gixy
+      - task: hadolint
+      - task: trivy
+      - task: syft
+      - task: grype
+      - task: dockle
