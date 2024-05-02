@@ -40,7 +40,7 @@ jobs:
       pull-requests: write
     steps:      
       - name: 🚀 Create Pre-Release version
-        uses: release-drafter/release-drafter@v5
+        uses: release-drafter/release-drafter@v6
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       
