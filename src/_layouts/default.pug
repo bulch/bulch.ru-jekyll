@@ -3,7 +3,8 @@ html(lang="ru")
   head
     meta(charset="UTF-8")
     meta(name="viewport" content="width=device-width")
-    title {{page.title}}
+    title {{ page.title }}
+    meta(name="description" content="{{ page.title }} - {{ page.description }} {{ site.description }}")
     link(rel="stylesheet", href="{{ '/assets/css/normalize.css' | relative_url }}")
     link(rel="stylesheet", href="{{ '/assets/css/main.css' | relative_url }}")
     | {% for style in page.styles %}
