@@ -26,7 +26,7 @@ html(lang="ru")
         ul
           | {% for contact in site.data.contacts %}
           li
-            a(href="{{ contact.url }}", title="{{ contacts.description }}", target="_blank", title="{{ contact.name }}") {{ contact.name }}
+            a(href="{{ contact.url }}", title="{{ contacts.description }}", target="_blank") {{ contact.name }}
           | {% endfor %}
     | {% for script in page.scripts %}
     script(src="{{ script | relative_url }}")
