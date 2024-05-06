@@ -65,10 +65,3 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./
-      
-      - uses: actions/checkout@v4
-      - name: Run Lighthouse against a static dist dir
-        uses: ./
-        with:
-          # no urls needed, since it uses local folder to scan .html files
-          configPath: '.github/lighthouse/lighthouserc-static-dist-dir.yml'
