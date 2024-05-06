@@ -38,7 +38,7 @@ jobs:
           name: jekyll_site
           path: _site
           retention-days: 5
-  
+
   optimized:
     runs-on: ubuntu-latest
     needs: build
@@ -65,5 +65,20 @@ jobs:
       
       - name: ⏰ Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
+        # with:
+        #   path: ./
+
+  lighthouse:
+    runs-on: ubuntu-latest
+    steps:
+      - name: ↓ Download a single artifact
+        uses: actions/download-artifact@v4
         with:
-          path: ./
+          name: github-pages
+
+      - uses: actions/checkout@v4
+      - name: Run Lighthouse against a static dist dir
+        uses: ./
+        with:
+          # no urls needed, since it uses local folder to scan .html files
+          configPath: '.github/lighthouse/lighthouserc-static-dist-dir.yml'
