@@ -60,20 +60,12 @@ jobs:
 
       - name: 🍬 Optimized-builder - image jpg to jpegoptim
         run: find ./ -maxdepth 10 -type f -name "*.jpg" | awk '{ print "\""$0"\""}' | xargs -n 1 jpegoptim --strip-all | true
-      
+
       - name: ⏰ Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
-        # with:
-        #   path: ./
-
-  lighthouse:
-    runs-on: ubuntu-latest
-    steps:
-      - name: ↓ Download a single artifact
-        uses: actions/download-artifact@v4
         with:
-          name: github-pages
-
+          path: ./
+      
       - uses: actions/checkout@v4
       - name: Run Lighthouse against a static dist dir
         uses: ./
