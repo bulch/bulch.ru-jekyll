@@ -1,0 +1,30 @@
+name: Lighthouse CI
+
+# on:
+#   workflow_run:
+#     workflows: 
+#       - 'Release Pages'
+#     types:
+#       - completed
+#     branches:
+#       - 'master'
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Audit URLs using Lighthouse
+        uses: treosh/lighthouse-ci-action@v11
+        with:
+          urls: |
+            https://jekyll.bulch.ru/
+            https://jekyll.bulch.ru/works
+            https://jekyll.bulch.ru/works/web/bulch.ru
+          budgetPath: ./budget.json
+          uploadArtifacts: true
+          temporaryPublicStorage: true
