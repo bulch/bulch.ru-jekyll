@@ -1,7 +1,7 @@
 .card
   .title
     h3 
-      a(href="{{ include.url }}") {{ include.title }}
+      a(href="{{ include.url }}") {% include glitch.pug text=include.title %}
   //- .description {{ include.description }}
   .tags
     ul

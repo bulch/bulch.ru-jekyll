@@ -10,6 +10,10 @@ html(lang="ru")
     | {% for style in page.styles %}
     link(rel="stylesheet", href="{{ style | relative_url }}")
     | {% endfor %}
+    link(rel="apple-touch-icon", sizes="180x180", type="image/png", href="/assets/favicon/apple-touch-icon.png")
+    link(rel="icon", sizes="32x32", type="image/png", href="/assets/favicon/favicon-32x32.png")
+    link(rel="icon", sizes="16x16", type="image/png", href="/assets/favicon/favicon-16x16.png")
+    link(rel="manifest", href="/assets/favicon/ site.webmanifest")
   body
     header
       .logo
@@ -17,16 +21,16 @@ html(lang="ru")
       nav
         ul
           li
-            a(href="/works") works
+            a(href="/works") {% include glitch.pug text="works" %}
     .wrapper {{content}}
     footer
       div 
         p Сайт создан с помощью <a href="https://jekyllrb.com/" target="_blank" title="Jekyll">Jekyll</a> и <a href="https://pages.github.com/" target="_blank" title="GitHub Pages">GitHub Pages</a>. Весь код размещён на <a href="{{ site.github_page }}" target="_blank" title="Github bulch">Github</a>
-      div.tags
+      div.tags.tags--footer
         ul
           | {% for contact in site.data.contacts %}
           li
-            a(href="{{ contact.url }}", title="{{ contacts.description }}", target="_blank") {{ contact.name }}
+            a(href="{{ contact.url }}", title="{{ contacts.description }}", target="_blank") {% include glitch.pug text=contact.name %}
           | {% endfor %}
     | {% for script in page.scripts %}
     script(src="{{ script | relative_url }}")
