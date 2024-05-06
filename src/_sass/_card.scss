@@ -51,11 +51,20 @@ $card-background: lighten($backgrond, 8%);
 // Display
 .card-grid {
   display: grid;
- 	grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-auto-rows: auto;
   gap: 20px;
 	padding: 0;
   margin: 20px;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1f 1fr;
+  @media (max-width: $screen-xl) {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  }
+  @media (max-width: $screen-lg) {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+  @media (max-width: $screen-md) {
+    grid-template-columns: auto;
+  }
 }
 .card {
 	display: flex;
