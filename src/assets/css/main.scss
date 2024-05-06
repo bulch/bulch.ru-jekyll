@@ -12,6 +12,16 @@
   }
 }
 
+a {
+  color: $blue;
+  text-decoration: none;
+  font-family: monospace;
+  &:hover {
+    color: lighten($blue, 10%);
+    text-decoration: underline;
+  }
+}
+
 .logo {
   a {
     text-decoration: none;

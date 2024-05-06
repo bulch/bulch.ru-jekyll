@@ -7,7 +7,7 @@ $description-text: $comments;
 // $yellow - global src/_sass/_variables.scss
 $tag-text: lighten($yellow, 10%);
 // $backgrond - global src/_sass/_variables.scss
-$card-background: lighten($backgrond, 10%);
+$card-background: lighten($backgrond, 8%);
 
 .title {
   color: $title-text;
@@ -32,10 +32,11 @@ $card-background: lighten($backgrond, 10%);
   color: $tag-text;
   ul {
     li {
-      color: $tag-text;
-      background: lighten($card-background, 10%);
+      color: lighten($tag-text, 5%);
+      background: darken($card-background, 5%);
       &:hover {
-        background: lighten($card-background, 3%);
+        color: lighten($tag-text, 2%);
+        background: darken($card-background, 2%);
       }
     }
   }
@@ -71,6 +72,8 @@ $card-background: lighten($backgrond, 10%);
   }
   .date {
     span {
+      text-transform: uppercase;
+      font-family: monospace;
       font-size: small;
     }
   }
