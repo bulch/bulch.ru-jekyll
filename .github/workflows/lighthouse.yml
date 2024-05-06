@@ -10,8 +10,8 @@ name: Lighthouse CI
 #       - 'master'
 on:
   push:
-    branches:
-      - master
+    # branches:
+    #   - master
 
 jobs:
   lighthouse:
@@ -20,11 +20,14 @@ jobs:
       - uses: actions/checkout@v4
       - name: Audit URLs using Lighthouse
         uses: treosh/lighthouse-ci-action@v11
+        env:
+          URL_DOMAIN: 'jekyll.bulch.ru'
         with:
           urls: |
-            https://jekyll.bulch.ru/
-            https://jekyll.bulch.ru/works
-            https://jekyll.bulch.ru/works/web/bulch.ru
-          budgetPath: ./budget.json
+            https://$URL_DOMAIN/
+            https://$URL_DOMAIN/works
+            https://$URL_DOMAIN/works/web/bulch.ru
+          budgetPath: .github/lighthouse/budget.json
+          configPath: .github/lighthouse/lighthouserc-assertions.json
           uploadArtifacts: true
           temporaryPublicStorage: true

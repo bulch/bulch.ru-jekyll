@@ -53,4 +53,4 @@ jobs:
             🍏 ${{ github.actor }}
             Commit message: ${{ github.event.commits[0].message }}
             Repository: https://github.com/${{ github.repository }}
-            Commit: https://github.com/${{ github.repository }}/commit/${{github.sha}}
+            Commit: https://github.com/${{ github.repository }}/commit/${{ github.sha }}
