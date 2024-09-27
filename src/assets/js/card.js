@@ -1,6 +1,6 @@
 function hoverBg(elCards, elBg) {
-    let hoverIndex = localStorage.getItem("hoverIndex") || 0;
-    let cardRect = elCards[hoverIndex].getBoundingClientRect();
+    const hoverIndex = localStorage.getItem("hoverIndex");
+    const cardRect = elCards[hoverIndex].getBoundingClientRect();
     let x = cardRect.left;
     let y = cardRect.top;
     [x, y] = settingsBg(elBg, cardRect);
@@ -13,10 +13,10 @@ function hoverBg(elCards, elBg) {
 }
 
 function settingsBg(el, rect) {
-    let x = rect.left + window.scrollX + rect.width / 2;
-    let y = rect.top + window.scrollY + rect.height / 2;
-    let tx = x - rect.width / 2;
-    let ty = y - rect.height / 2;
+    const x = rect.left + window.scrollX + rect.width / 2;
+    const y = rect.top + window.scrollY + rect.height / 2;
+    const tx = x - rect.width / 2;
+    const ty = y - rect.height / 2;
     el.style.width = rect.width + "px";
     el.style.height = rect.height + "px";
     el.style.transform = `translate(${tx}px, ${ty}px)`;
