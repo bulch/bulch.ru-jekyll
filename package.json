@@ -1,0 +1,6 @@
+{
+  "devDependencies": {
+    "pug-lint-config-clock": "^2.0.0",
+    "pug-lint": "^2.7.0"
+  }
+}
