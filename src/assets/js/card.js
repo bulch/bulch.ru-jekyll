@@ -1,12 +1,10 @@
 function hoverBg(elCards, elBg) {
     const hoverIndex = localStorage.getItem("hoverIndex");
     const cardRect = elCards[hoverIndex].getBoundingClientRect();
-    let x = cardRect.left;
-    let y = cardRect.top;
-    [x, y] = settingsBg(elBg, cardRect);
+    settingsBg(elBg, cardRect);
     elCards.forEach(function (card, index) {
         card.addEventListener("mouseenter", function () {
-            [x, y] = settingsBg(elBg, card.getBoundingClientRect());
+            settingsBg(elBg, card.getBoundingClientRect());
             localStorage.setItem("hoverIndex", index);
         });
     });
