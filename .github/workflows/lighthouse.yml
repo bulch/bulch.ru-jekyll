@@ -1,15 +1,15 @@
 name: Lighthouse CI
 
-# on:
-#   workflow_run:
-#     workflows: 
-#       - 'Release Pages'
-#     types:
-#       - completed
-#     branches:
-#       - 'master'
 on:
-  push:
+  workflow_run:
+    workflows: 
+      - 'Release Pages'
+    types:
+      - completed
+    branches:
+      - 'master'
+# on:
+#   push:
     # branches:
     #   - master
 
