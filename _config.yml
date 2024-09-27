@@ -57,6 +57,10 @@ plugins             :
   - jekyll-minifier
   - jekyll-pug
 
+jekyll-minifier:
+  uglifier_args:
+    harmony: true
+
 jekyll-pug          :
   minify: true
 
