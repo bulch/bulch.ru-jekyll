@@ -6,6 +6,10 @@ url: htps://bulch.ru
 github_username: bulch
 github_page: https://github.com/bulch/bulch.ru-jekyll
 
+assets:
+  external:
+    uglifier:
+      harmony: true
 # Where things are
 source              : src
 destination         : _site

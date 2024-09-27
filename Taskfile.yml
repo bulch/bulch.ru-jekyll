@@ -7,6 +7,9 @@ env:
   PUBLISH_PORT: 8080
 
 tasks:
+  lint:
+    cmds:
+      - npx eslint src/ src/assets/js/card.js
   local-install:
     cmds:
       # - nvm use
