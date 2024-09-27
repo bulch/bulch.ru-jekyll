@@ -80,6 +80,7 @@ jobs:
 
   validator:
     runs-on: ubuntu-latest
+    needs: optimized
     steps:
       - name: Download source
         uses: actions/download-artifact@v4
