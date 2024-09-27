@@ -16,18 +16,22 @@ jobs:
     steps:
       - name: 📂 Setup
         uses: actions/checkout@v4
-      
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '18.16.0'
-      
-      - name: 💉 Install dependencies
-        run: npm install --global pug
 
       - name: 💎 Setup ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.0.2
+          ruby-version: 3.2.4
+      
+      - name: 💎 Setup node 
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.9.0
+      
+      - name: 💉 Install pug global dependencies
+        run: npm install --global pug
+
+      - name: 💉 Install dependencies
+        run: npm install
 
       - name: 🔨 Build site
         uses: limjh16/jekyll-action-ts@v2
