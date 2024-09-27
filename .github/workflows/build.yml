@@ -27,6 +27,9 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22.9.0
+      
+      - run: npm install --global pug
+      - run: npm install
 
       - name: 🔨 Build site
         uses: limjh16/jekyll-action-ts@v2
