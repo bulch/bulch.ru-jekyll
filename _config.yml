@@ -16,13 +16,16 @@ includes_dir        : _components
 sass                : 
   sass_dir: _sass
   style: compressed
+collections_dir     : _collections
 collections         :
   posts:
+    permalink: /:categories/:year/:month/:day/:title:output_ext
     output: true
   works:
     permalink: /works/:categories/:title
     output: true
-
+plugins:
+  - jekyll-minifier
 # Handling Reading
 safe                : false
 include             : [".htaccess"]

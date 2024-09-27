@@ -7,6 +7,17 @@ env:
   PUBLISH_PORT: 8080
 
 tasks:
+  local-install:
+    cmds:
+      # - nvm use
+      - gem install bundler jekyll
+      - bundle install
+      - npm install --global pug
+      - npm install
+  local:
+    cmds:
+      - bundle exec jekyll serve
+
   build:
     desc: Build container
     cmds:

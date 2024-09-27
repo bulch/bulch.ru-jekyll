@@ -1,38 +1,67 @@
 ---
-layout: default
+layout: blank
 title: My Blog
 permalink: /test
 ---
+collections:
+{{ site.collections | where: "label", "works" | first }}
+<br>
 site:
-
 {% for s in site %}
 <span>{{ s }}, </span>
 {% endfor %}
 <br>
+
+collections:
+{% for  c in  site.collections %}
+<span>{{ c }}, </span>
+<span>{{ c.label }}, </span>
+<span>{{ c.name }}, </span>
+<span>{{ c.permalink }}, </span>
+{% endfor %}
+<br>
 posts:
 <ul class="two">
-  {% for post in site.posts %}
-  <h1>{{ post }} </h1>
+  {% for p in site.posts %}
+  <h1>{{ p }} </h1>
     <li>
-      <a href="{{ post.url }}">{{ post.title }}</a>
+      <a href="{{ p.url }}">{{ p.title }}</a>
     </li>
   {% endfor %}
 </ul>
 works:
 <ul class="card-grid">
   {%- assign works = site.works | sort: 'date' | reverse -%}
-  {% for work in works %}
-    {% include card.pug title=work.title description=work.excerpt tags=work.tags url=work.url date=work.date %}
+  {% for w in works %}
+    {% include card.pug title=w.title description=w.excerpt tags=w.tags url=w.url date=w.date %}
   {% endfor %}
 </ul>
 
 all tags uniq:
 {% assign tags = site.works | map: 'tags' | uniq %}
 <ul class="two">
-  {% for tag in tags %}
-    <li>{{ tag }}</li>
+  {% for t in tags %}
+    <li>{{ t }}</li>
   {% endfor %}
-</ul>
+</ul> 
 
 pen:
-<a href="/pen/test/test.html">/pen/test/test.html</a>
+{% comment %} {% assign pens = site.pens | sort: 'name' | uniq %}
+<ul class="card-grid">
+  {% for p in pens %}
+  {{ p }}
+    {% include card.pug title=p.title description=p.excerpt tags=p.tags url=p.url date=p.date %}
+  {% endfor %}
+</ul> {% endcomment %}
+{% comment %} <pre class="two">
+  11
+  {% for pen in pens %}
+    <code>{{ pen }}</code>
+    permalink:     <code>{{ pen.permalink }}</code>
+    title: <code> {{ pen.title }}</code>
+    url: <code> {{ pen.url }}</code>
+    name: <code> {{ pen.name }}</code>
+    position: <code> {{ pen.position }}</code>
+  {% endfor %}
+  22
+</pre> {% endcomment %}
