@@ -24,8 +24,7 @@ collections         :
   works:
     permalink: /works/:categories/:title
     output: true
-plugins:
-  - jekyll-minifier
+
 # Handling Reading
 safe                : false
 include             : [".htaccess"]
@@ -50,7 +49,10 @@ unpublished         : false
 
 # Plugins
 whitelist           : []
-plugins             : ["jekyll-pug"]
+plugins             : 
+  - jekyll-minifier
+  - jekyll-pug
+
 jekyll-pug          :
   minify: true
 
