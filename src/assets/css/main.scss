@@ -1,5 +1,6 @@
 ---
 ---
+@use "sass:color";
 @import "base";
 
 :root {
@@ -17,7 +18,7 @@ a {
   text-decoration: none;
   font-family: monospace;
   &:hover {
-    color: lighten($blue, 10%);
+    color: color.adjust($blue, $lightness: 10%);
     text-decoration: underline;
   }
 }
@@ -28,7 +29,7 @@ a {
     color: $white;
     font-size: 42px;
     &:hover {
-      color: darken($color: $backgrond, $amount: 5);
+      color: color.adjust($color: $backgrond, $lightness: -5%);
       cursor: pointer;
     }
   }

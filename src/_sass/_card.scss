@@ -1,13 +1,16 @@
+@use "sass:color";
+
 $max-card-description-line: 3;
 // Colors
 // $orange - global src/_sass/_variables.scss
-$title-text: lighten($orange, 10%);
+$title-text: color.adjust($orange, $lightness: 10%);
+
 // $comments - global src/_sass/_variables.scss
 $description-text: $comments;
 // $yellow - global src/_sass/_variables.scss
-$tag-text: lighten($yellow, 10%);
+$tag-text: color.adjust($yellow, $lightness: 10%);
 // $backgrond - global src/_sass/_variables.scss
-$card-background: lighten($backgrond, 8%);
+$card-background: color.adjust($backgrond, $lightness: 8%);
 
 .title {
   color: $title-text;
@@ -19,24 +22,24 @@ $card-background: lighten($backgrond, 8%);
     color: inherit;
   }
   &:hover {
-    color: lighten($title-text, 3%);
+    color: color.adjust($title-text, $lightness: 3%);
   }
 }
 .description {
   color: $description-text;
   &:hover {
-    color: lighten($description-text, 3%);
+    color: color.adjust($description-text, $lightness: 3%);
   }
 }
 .tags {
   color: $tag-text;
   ul {
     li {
-      color: lighten($tag-text, 5%);
-      background: darken($card-background, 5%);
+      color: color.adjust($tag-text, $lightness: 5%);
+      background: color.adjust($card-background, $lightness: -5%);
       &:hover {
-        color: lighten($tag-text, 2%);
-        background: darken($card-background, 2%);
+        color: color.adjust($tag-text, $lightness: 2%);
+        background: color.adjust($card-background,  $lightness: -2%);
       }
     }
   }
@@ -46,7 +49,7 @@ $card-background: lighten($backgrond, 8%);
   padding: 15px;
   &:hover {
     .wrapper {
-      background: lighten($card-background, 3%);
+      background: color.adjust($card-background, $lightness: 3%);
     }
   }
   .wrapper {
@@ -55,7 +58,7 @@ $card-background: lighten($backgrond, 8%);
 }
 
 .background-card {
-  background-color: lighten($card-background, 3%);
+  background-color: color.adjust($card-background, $lightness: 3%);
   position: absolute;
   transition: all 0.3s ease-in-out;
   z-index: 1;
