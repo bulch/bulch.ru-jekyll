@@ -22,6 +22,11 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.2.4
+      
+      - name: 💎 Setup node 
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.9.0
 
       - name: 🔨 Build site
         uses: limjh16/jekyll-action-ts@v2
