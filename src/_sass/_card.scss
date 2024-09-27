@@ -42,10 +42,26 @@ $card-background: lighten($backgrond, 8%);
   }
 }
 .card {
-  background-color: $card-background;
+  background-color: transparent;
+  padding: 15px;
   &:hover {
-		background: lighten($card-background, 3%);
-	}
+    .wrapper {
+      background: lighten($card-background, 3%);
+    }
+  }
+  .wrapper {
+    background-color: $card-background;
+  }
+}
+
+.background-card {
+  background-color: lighten($card-background, 3%);
+  position: absolute;
+  transition: all 0.3s ease-in-out;
+  z-index: 1;
+  transform-origin: center;
+  top:0;
+  left: 0;
 }
 
 // Display
@@ -67,23 +83,26 @@ $card-background: lighten($backgrond, 8%);
   }
 }
 .card {
-	display: flex;
-  justify-content: start;
-	align-items: flex-start;
-	flex-direction: column;
-  padding: 20px;
-  margin: 0;
-  .description {
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: $max-card-description-line;
-    overflow: hidden;
-  }
-  .date {
-    span {
-      text-transform: uppercase;
-      font-family: monospace;
-      font-size: small;
+  z-index: 2;
+	.wrapper {
+    display: flex;
+    justify-content: start;
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 20px;
+    margin: 0;
+    .description {
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: $max-card-description-line;
+      overflow: hidden;
+    }
+    .date {
+      span {
+        text-transform: uppercase;
+        font-family: monospace;
+        font-size: small;
+      }
     }
   }
 }

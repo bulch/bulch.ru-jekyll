@@ -1,13 +1,14 @@
 .card
-  .title
-    h3 
-      a(href="{{ include.url }}") {% include glitch.pug text=include.title %}
-  //- .description {{ include.description }}
-  .tags
-    ul
-      | {% for tag in include.tags %}
-      li {{ tag }}
-      | {% endfor %}
-  .date
-    span {{ include.date | date_to_string }}
+  .wrapper
+    .title
+      h3 
+        a(href="{{ include.url }}") {% include glitch.pug text=include.title %}
+    //- .description {{ include.description }}
+    .tags
+      ul
+        | {% for tag in include.tags %}
+        li {{ tag }}
+        | {% endfor %}
+    .date
+      span {{ include.date | date_to_string }}
 

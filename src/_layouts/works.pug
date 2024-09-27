@@ -3,6 +3,7 @@ layout: default
 ---
 | {% assign works = site.works | sort: 'date' | reverse %}
 .card-grid
+  div.background-card
   | {% for work in works %}
   | {% if work.published_on_main %}
   | {% include card.pug title=work.title description=work.excerpt tags=work.tags url=work.url date=work.date %}
