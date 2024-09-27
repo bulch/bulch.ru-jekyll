@@ -1,0 +1,29 @@
+name: Validator
+
+on:
+  workflow_run:
+    workflows: 
+      - 'Build'
+    types:
+      - completed
+
+jobs:
+  validator:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download source
+        uses: actions/download-artifact@v4
+        with:
+          name: jekyll_site
+          path: _site
+
+      - name: HTML5Validator
+        uses: Cyb3r-Jak3/html5validator-action@v7.2.0
+        with:
+          root: _site
+
+      - name: Upload log
+        uses: actions/upload-artifact@v3
+        with:
+          name: log
+          path: log.log

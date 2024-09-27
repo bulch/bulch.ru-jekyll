@@ -6,6 +6,10 @@ url: htps://bulch.ru
 github_username: bulch
 github_page: https://github.com/bulch/bulch.ru-jekyll
 
+assets:
+  external:
+    uglifier:
+      harmony: true
 # Where things are
 source              : src
 destination         : _site
@@ -16,8 +20,10 @@ includes_dir        : _components
 sass                : 
   sass_dir: _sass
   style: compressed
+collections_dir     : _collections
 collections         :
   posts:
+    permalink: /:categories/:year/:month/:day/:title:output_ext
     output: true
   works:
     permalink: /works/:categories/:title
@@ -47,7 +53,14 @@ unpublished         : false
 
 # Plugins
 whitelist           : []
-plugins             : ["jekyll-pug"]
+plugins             : 
+  - jekyll-minifier
+  - jekyll-pug
+
+jekyll-minifier:
+  uglifier_args:
+    harmony: true
+
 jekyll-pug          :
   minify: true
 
