@@ -16,8 +16,8 @@ tags:
   - docker
   - jenkins
   - ansible
-published_on_main: false
-published: false
+published_on_main: true
+published: true
 ---
 
 В рамках проекта по мониторингу инфраструктуры и приложений я внедрил и настроил следующие технологии:
