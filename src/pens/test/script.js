@@ -116,7 +116,7 @@ function createImage(src) {
   // box.setAttribute('style', `width: ${control.width}%`)
   box.innerHTML = '';
   const image = document.createElement('img');
-  if (src){
+  if (src && isValidImageUrl(src)){
     image.setAttribute('src', src);
     image.setAttribute('height', imageHeight - placeholderOffset);
     image.setAttribute('width', imageWidth - placeholderOffset);
@@ -140,6 +140,10 @@ function createImage(src) {
     console.log('image loaded successfully');
   };
   box.appendChild(image);
+}
+
+function isValidImageUrl(url) {
+  return (url.match(/\.(jpeg|jpg|gif|png)$/) != null);
 }
 createImage()
 
