@@ -43,6 +43,26 @@ $card-background: color.adjust($backgrond, $lightness: 8%);
       }
     }
   }
+  &--footer {
+    ul {
+      li {
+        color: transparent;
+        background: transparent;
+        &:hover {
+          color: transparent;
+          background: transparent;
+        }
+        a {
+          color: color.adjust($tag-text, $lightness: 5%);
+          background: color.adjust($card-background, $lightness: -5%);
+          &:hover {
+            color: color.adjust($tag-text, $lightness: 2%);
+            background: color.adjust($card-background,  $lightness: -2%);
+          }
+        }
+      }
+    }
+  }
 }
 .card {
   background-color: transparent;
@@ -123,6 +143,19 @@ $card-background: color.adjust($backgrond, $lightness: 8%);
       padding: 5px 10px;
       text-align: center;
       font-size: small;
+    }
+  }
+  &--footer {
+    ul {
+      li {
+        // margin: auto;
+        // padding: auto;
+        a {
+          padding: 5px 10px;
+          text-align: center;
+          font-size: small;
+        }
+      }
     }
   }
 }
