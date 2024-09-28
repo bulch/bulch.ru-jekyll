@@ -2,6 +2,9 @@ function hoverBg(elCards, elBg) {
     const hoverIndex = localStorage.getItem("hoverIndex");
     const cardRect = elCards[hoverIndex].getBoundingClientRect();
     settingsBg(elBg, cardRect);
+    setTimeout(function () {
+        elBg.style.opacity = 1;
+    }, 300);
     elCards.forEach(function (card, index) {
         card.addEventListener("mouseenter", function () {
             settingsBg(elBg, card.getBoundingClientRect());
@@ -25,5 +28,5 @@ document.addEventListener("DOMContentLoaded", function () {
     const cards = document.querySelectorAll("div.card");
     const bg = document.querySelector("div.background-card");
     localStorage.setItem("hoverIndex", 0);
-    setTimeout(() => hoverBg(cards, bg), 1000);
+    setTimeout(() => hoverBg(cards, bg), 1);
 });
