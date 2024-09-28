@@ -15,7 +15,7 @@ tags:
   - php
   - modx
   - modx api
-published_on_main: false
-published: false
+published_on_main: true
+published: true
 ---
 Сайт с калькулятором расчета стоимости гарантий по 44-ФЗ,   223-ФЗ,  615-ПП (185-ФЗ)

@@ -12,7 +12,7 @@ tags:
   - jquery
   - php
   - modx
-published_on_main: false
-published: false
+published_on_main: true
+published: true
 ---
 c 2016 до 2018 года сайт потерпел 3 редизайна

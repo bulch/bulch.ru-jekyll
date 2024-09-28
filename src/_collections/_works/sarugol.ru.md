@@ -19,8 +19,8 @@ tags:
 urls:
   - http://sarugol.ru
   - https://bulch.gitlab.io/sarugol/
-published_on_main: false
-published: false
+published_on_main: true
+published: true
 ---
 ## Русский уголь
 

@@ -85,6 +85,7 @@ $card-background: color.adjust($backgrond, $lightness: 8%);
   transform-origin: center;
   top:0;
   left: 0;
+  opacity: 0;
 }
 
 // Display
@@ -93,13 +94,13 @@ $card-background: color.adjust($backgrond, $lightness: 8%);
   grid-auto-rows: auto;
   gap: 20px;
 	padding: 0;
-  margin: 20px;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1f 1fr;
+  margin: 0;
+  grid-template-columns: repeat(5, 1fr);
   @media (max-width: $screen-xl) {
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: repeat(4, 1fr);
   }
   @media (max-width: $screen-lg) {
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
   }
   @media (max-width: $screen-md) {
     grid-template-columns: auto;
