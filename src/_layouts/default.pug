@@ -8,7 +8,6 @@ html(lang="ru")
     meta(name="viewport" content="width=device-width")
     title {{ site.title }} {{ site.description }} - {{ page.title }}
     meta(name="description" content="{{ page.title }} - {{ page.description }} / {{ site.description }}")
-    link(rel="stylesheet", href="{{ 'https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css' }}")
     link(rel="stylesheet", href="{{ '/assets/css/main.css' | relative_url }}")
     | {% for style in page.styles %}
     link(rel="stylesheet", href="{{ style | relative_url }}")
@@ -20,11 +19,11 @@ html(lang="ru")
   body
     header
       .logo
-        a(href="/" title="{{ site.title }}") {% include glitch.pug text="bulch" %}
+        a(href="/" title="{{ site.title }}") {% include glitch.pug text="bulch" %} 
       nav
         ul
           li
-            a(href="/works") {% include glitch.pug text="works" %}
+            a(href="/works") works
     .wrapper {{content}}
     footer
       div 
@@ -33,7 +32,7 @@ html(lang="ru")
         ul
           | {% for contact in site.data.contacts %}
           li
-            a(href="{{ contact.url }}", title="{{ contacts.description }}", target="_blank") {% include glitch.pug text=contact.name %}
+            a(href="{{ contact.url }}", title="{{ contacts.description }}", target="_blank") {{ contact.name }}
           | {% endfor %}
     | {% for script in page.scripts %}
     script(src="{{ script | relative_url }}")
