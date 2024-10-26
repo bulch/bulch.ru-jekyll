@@ -12,8 +12,8 @@ tags:
   - nuxtjs
   - sass
   - webpack
-published_on_main: false
-published: false
+published_on_main: true
+published: true
 ---
 Модный, дерзкий, ошеломляющий дом RED7 приковывает к себе внимание яркой индивидуальностью, выходит за рамки привычного пространства и времени и существует сразу в семи измерениях. Пришло время о них узнать. 
 <!--readmore-->

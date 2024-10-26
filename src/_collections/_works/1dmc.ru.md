@@ -15,7 +15,7 @@ tags:
   - modx snippets
   - modx API
   - migrate joomla to modx
-published_on_main: false
-published: false
+published_on_main: true
+published: true
 ---
 Сайт мигрировал с cms Joomla на cmf Modx с сохранением всего функционала, перенос БД. Под эту задачу разработали механизм модуля комментариев, набор шаблонов сайта для генерации новых страниц.

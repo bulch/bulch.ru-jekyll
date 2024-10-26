@@ -11,8 +11,8 @@ tags:
   - jquery
   - php
   - wordpress
-published_on_main: false
-published: false
+published_on_main: true
+published: true
 ---
 ## SMOG  — издание об удобном Саратове
 Сайт издания, для многих пользователей с модерацией, визуальными редакторами и кучей плагинов для вордпресс.

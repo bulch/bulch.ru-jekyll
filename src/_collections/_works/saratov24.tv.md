@@ -12,8 +12,8 @@ tags:
   - php
   - youtube api
   - yandex turbo
-published_on_main: false
-published: false
+published_on_main: true
+published: true
 ---
 Новостной сайт сетевого издания "Саратов24"
 <!--readmore-->
