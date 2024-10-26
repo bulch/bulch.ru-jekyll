@@ -15,8 +15,8 @@ tags:
   - php
   - modx
   - modx api
-published_on_main: false
-published: false
+published_on_main: true
+published: true
 ---
 Большой корпоративный сайт для адвоката с большим количеством правовой информации и опытом компании
 
