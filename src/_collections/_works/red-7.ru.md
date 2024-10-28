@@ -27,3 +27,5 @@ published: true
 Настройка выгрузки информации из CRM на сайт;
 Настройка обратной связи;
 Интеграция с картами.
+
+![Screenshot_2024-10-28_RED7](/assets/img/screenshots/red7/Screenshot_2024-10-28_RED7.png)
