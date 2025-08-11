@@ -49,7 +49,7 @@ jobs:
         run: sudo apt-get update && sudo apt-get -y install jpegoptim optipng brotli
 
       - name: ↓ Download a single artifact
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v5
         with:
           name: jekyll_site
 
@@ -83,7 +83,7 @@ jobs:
   #   needs: optimized
   #   steps:
   #     - name: Download source
-  #       uses: actions/download-artifact@v4
+  #       uses: actions/download-artifact@v5
   #       with:
   #         name: jekyll_site_opty
 
