@@ -41,7 +41,7 @@ jobs:
           custom_opts: '--config _config.yml'
       
       - name: Upload Artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: jekyll_site
           path: _site
